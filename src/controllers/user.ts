@@ -25,9 +25,9 @@ export async function getUser(req: Request<{ id: string }>, res: Response) {
 }
 
 export async function createUser(req: Request<{}, {}, UserDto>, res: Response) {
-  const user = req.body;
+  const userData = req.body;
   const useCase = container.resolve(CreateUserUseCase);
-  const result = await useCase.handle(user);
+  const result = await useCase.handle(userData);
   return processResult(res, result);
 }
 

@@ -1,5 +1,4 @@
 import { City, PrismaClient, User } from '@prisma/client';
-import { equal } from 'assert';
 import { injectable, inject } from 'tsyringe';
 
 export interface IUserRepository {
