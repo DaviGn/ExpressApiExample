@@ -2,8 +2,7 @@ import { inject, injectable } from 'tsyringe';
 
 import { UserDto } from '@domain/dtos/user';
 import { IUserRepository } from '@repositories/user';
-import { IPresenter, NotFoundPresenter } from '@presenters';
-import { SuccessPresenter } from '../../presenters/success';
+import { IPresenter, NotFoundPresenter, SuccessPresenter } from '@presenters';
 
 @injectable()
 export class UpdateUserUseCase {

@@ -11,13 +11,12 @@ const baseUserValidations = [
     .withMessage('City is required!'),
 ];
 
-const baseEmailValidationChain = body('email')
-  .notEmpty()
-  .withMessage('E-mail is required')
-  .bail()
-  .isEmail()
-  .withMessage('E-mail is invalid!')
-  .bail();
+// const baseEmailValidationChain = body('email')
+//   .notEmpty()
+//   .withMessage('E-mail is required')
+//   .isEmail()
+//   .withMessage('E-mail is invalid!')
+//   .bail();
 
 export const userIdValidation = [
   param('id').notEmpty().withMessage('Id is required!'),
@@ -25,43 +24,53 @@ export const userIdValidation = [
 
 export const createUserValidations = [
   ...baseUserValidations,
-  baseEmailValidationChain.custom((value) => {
-    return new Promise((resolve, reject) => {
-      validateIfUserExistsByEmail(value).then((result) => {
-        if (result) reject('E-mail is already in use!');
-        else resolve(value);
+  body('email')
+    .notEmpty()
+    .withMessage('E-mail is required')
+    .isEmail()
+    .withMessage('E-mail is invalid!')
+    .bail()
+    .custom((value) => {
+      return new Promise((resolve, reject) => {
+        checkIfUserExistsByEmail(value).then((result) => {
+          if (result) {
+            reject('E-mail is already in use!');
+          } else {
+            resolve(value);
+          }
+        });
       });
-    });
-  }),
+    }),
 ];
 
 export const updateUserValidations = [
   ...userIdValidation,
   ...baseUserValidations,
-  baseEmailValidationChain.custom((value, { req }) => {
-    return new Promise((resolve, reject) => {
-      validateIfUserExistsByEmail(value, req.params?.id).then((result) => {
-        if (result) reject('E-mail is already in use!');
-        else resolve(value);
+  body('email')
+    .notEmpty()
+    .withMessage('E-mail is required')
+    .isEmail()
+    .withMessage('E-mail is invalid!')
+    .bail()
+    .custom((value, { req }) => {
+      return new Promise((resolve, reject) => {
+        checkIfUserExistsByEmail(value, req.params?.id).then((result) => {
+          if (result) {
+            reject('E-mail is already in use!');
+          } else {
+            resolve(value);
+          }
+        });
       });
-    });
-  }),
+    }),
 ];
 
-async function validateIfUserExistsByEmail(
+export async function checkIfUserExistsByEmail(
   email: string,
   id?: string
 ): Promise<boolean> {
   const userRepository = container.resolve<IUserRepository>(UserRepository);
-  return await checkIfUserExistsByEmail(userRepository, email, id);
-}
-
-export async function checkIfUserExistsByEmail(
-  repository: IUserRepository,
-  email: string,
-  id?: string
-) {
-  const userByEmail = await repository.findByEmail(email);
+  const userByEmail = await userRepository.findByEmail(email);
   const userExists = !!userByEmail;
 
   if (id) {
