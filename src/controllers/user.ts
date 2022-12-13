@@ -9,7 +9,7 @@ import {
   UpdateUserUseCase,
   DeleteUserUseCase,
 } from '@useCases/user';
-import { processResult } from 'presenters/result';
+import { processResult } from '@presenters';
 
 export async function listUsers(req: Request, res: Response) {
   const useCase = container.resolve(ListUsersUseCase);
