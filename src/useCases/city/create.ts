@@ -2,13 +2,13 @@ import { inject, injectable } from 'tsyringe';
 
 import { ICityRepository } from '@repositories/city';
 import { IPresenter, SuccessPresenter } from '@presenters';
-import { CityDto } from '@domain/dtos/city';
+import { CreateCityRequest } from '@request/city';
 
 @injectable()
 export class CreateCityUseCase {
   constructor(@inject('CityRepository') private repository: ICityRepository) {}
 
-  async handle(user: Omit<CityDto, 'id'>): Promise<IPresenter> {
+  async handle(user: CreateCityRequest): Promise<IPresenter> {
     const createdCity = await this.repository.create({
       name: user.name,
       uf: user.uf,

@@ -1,12 +1,19 @@
 import { City, PrismaClient, User } from '@prisma/client';
 import { injectable, inject } from 'tsyringe';
 
+interface UpdateUserData {
+  id: string;
+  name: string;
+  email: string;
+  cityId: number;
+}
+
 export interface IUserRepository {
   list(): Promise<(User & { city: City })[]>;
   findById(id: string): Promise<(User & { city: City }) | null>;
   findByEmail(email: string): Promise<User | null>;
   create(user: User): Promise<User>;
-  update(user: User): Promise<User>;
+  update(user: UpdateUserData): Promise<User>;
   delete(id: string): Promise<void>;
 }
 

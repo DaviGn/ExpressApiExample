@@ -1,14 +1,15 @@
 import { inject, injectable } from 'tsyringe';
 
-import { UserDto } from '@domain/dtos/user';
+import { UpdateUserRequest } from '@request/user';
 import { IUserRepository } from '@repositories/user';
 import { IPresenter, NotFoundPresenter, SuccessPresenter } from '@presenters';
+import { toUserResponse } from '@maps/user';
 
 @injectable()
 export class UpdateUserUseCase {
   constructor(@inject('UserRepository') private repository: IUserRepository) {}
 
-  async handle(user: UserDto): Promise<IPresenter> {
+  async handle(user: UpdateUserRequest & { id: string }): Promise<IPresenter> {
     const userExist = await this.checkIfUserExists(user.id);
 
     if (!userExist) {
@@ -16,7 +17,8 @@ export class UpdateUserUseCase {
     }
 
     const updatedUser = await this.repository.update(user);
-    return new SuccessPresenter(updatedUser);
+    const result = toUserResponse(updatedUser);
+    return new SuccessPresenter(result);
   }
 
   private async checkIfUserExists(id: string): Promise<boolean> {

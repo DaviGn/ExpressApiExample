@@ -1,6 +1,10 @@
 import { Request, Response, NextFunction } from 'express';
-import { NotFoundException } from '../domain/exceptions/notFoundException';
 import { ConflictException } from '../domain/exceptions/conflictException';
+import { IException } from '@domain/exceptions/iException';
+
+function isIException(obj: any): obj is IException {
+  return 'statusCode' in obj && 'message' in obj;
+}
 
 export default function errorsMiddleware(
   err: Error,
@@ -10,7 +14,7 @@ export default function errorsMiddleware(
 ) {
   console.log(err);
 
-  if (err instanceof NotFoundException) {
+  if (isIException(err)) {
     return res.status(err.statusCode).json({
       message: err.message,
     });

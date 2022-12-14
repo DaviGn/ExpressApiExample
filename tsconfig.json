@@ -31,9 +31,12 @@
     "baseUrl": "./src" /* Specify the base directory to resolve non-relative module names. */,
     "paths": {
       "@domain/*": ["domain/*"],
+      "@request/*": ["domain/requests/*"],
+      "@responses/*": ["domain/responses/*"],
       "@maps/*": ["maps/*"],
       "@controllers/*": ["controllers/*"],
       "@middlewares/*": ["middlewares/*"],
+      "@services/*": ["services/*"],
       "@useCases/*": ["useCases/*"],
       "@presenters": ["presenters/"],
       "@repositories/*": ["repositories/*"],

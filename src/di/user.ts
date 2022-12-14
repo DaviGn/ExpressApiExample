@@ -7,6 +7,7 @@ import {
   CreateUserUseCase,
   UpdateUserUseCase,
   DeleteUserUseCase,
+  AuthenticateUserUseCase,
 } from '@useCases/user';
 
 // Repositories
@@ -18,3 +19,4 @@ container.register('GetUserUseCase', GetUserUseCase);
 container.register('CreateUserUseCase', CreateUserUseCase);
 container.register('UpdateUserUseCase', UpdateUserUseCase);
 container.register('DeleteUserUseCase', DeleteUserUseCase);
+container.register('AuthenticateUserUseCase', AuthenticateUserUseCase);

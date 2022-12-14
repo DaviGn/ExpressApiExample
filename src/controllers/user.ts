@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 
-import { UserDto } from '@domain/dtos/user';
+import { CreateUserRequest, UpdateUserRequest } from '@request/user';
 import {
   ListUsersUseCase,
   GetUserUseCase,
@@ -24,7 +24,10 @@ export async function getUser(req: Request<{ id: string }>, res: Response) {
   return processResult(res, result);
 }
 
-export async function createUser(req: Request<{}, {}, UserDto>, res: Response) {
+export async function createUser(
+  req: Request<{}, {}, CreateUserRequest>,
+  res: Response
+) {
   const userData = req.body;
   const useCase = container.resolve(CreateUserUseCase);
   const result = await useCase.handle(userData);
@@ -32,7 +35,7 @@ export async function createUser(req: Request<{}, {}, UserDto>, res: Response) {
 }
 
 export async function updateUser(
-  req: Request<{ id: string }, {}, Omit<UserDto, 'id'>>,
+  req: Request<{ id: string }, {}, UpdateUserRequest>,
   res: Response
 ) {
   const { id } = req.params;

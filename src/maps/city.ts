@@ -1,5 +1,5 @@
 import { City } from '@prisma/client';
-import { CityResponse } from '../domain/response/city';
+import { CityResponse } from '@responses/city';
 
 export function toCityResponse(city: City): CityResponse {
   return {

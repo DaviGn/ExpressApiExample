@@ -1,6 +1,6 @@
 import { CityResponse } from './city';
 
-export interface UserResponse {
+export interface UserDataResponse {
   id: string;
   name: string;
   email: string;

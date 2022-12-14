@@ -13,12 +13,15 @@ import {
   updateUserValidations,
   userIdValidation,
 } from '@validators/user';
+import { isAuthenticated } from '@middlewares/auth';
 
 const userRoutes = Router();
+userRoutes.post('/', createUserValidations, validationsMiddleware, createUser);
 
+// Require auth
+userRoutes.use(isAuthenticated);
 userRoutes.get('/', listUsers);
 userRoutes.get('/:id', getUser);
-userRoutes.post('/', createUserValidations, validationsMiddleware, createUser);
 userRoutes.put(
   '/:id',
   updateUserValidations,

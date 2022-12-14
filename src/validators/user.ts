@@ -24,6 +24,7 @@ export const userIdValidation = [
 
 export const createUserValidations = [
   ...baseUserValidations,
+  body('password').notEmpty().withMessage('Password is required'),
   body('email')
     .notEmpty()
     .withMessage('E-mail is required')

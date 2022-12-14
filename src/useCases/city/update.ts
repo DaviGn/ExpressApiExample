@@ -2,13 +2,13 @@ import { inject, injectable } from 'tsyringe';
 
 import { ICityRepository } from '@repositories/city';
 import { IPresenter, NotFoundPresenter, SuccessPresenter } from '@presenters';
-import { CityDto } from '@domain/dtos/city';
+import { UpdateCityRequest } from '@request/city';
 
 @injectable()
 export class UpdateCityUseCase {
   constructor(@inject('CityRepository') private repository: ICityRepository) {}
 
-  async handle(city: CityDto): Promise<IPresenter> {
+  async handle(city: UpdateCityRequest & { id: number }): Promise<IPresenter> {
     const cityExist = await this.checkIfCityExists(city.id);
 
     if (!cityExist) {

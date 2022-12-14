@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 
-import { CityDto } from '@domain/dtos/city';
+import { CreateCityRequest, UpdateCityRequest } from '@request/city';
 import {
   ListCitiesUseCase,
   GetCityUseCase,
@@ -24,7 +24,10 @@ export async function getCity(req: Request<{ id: string }>, res: Response) {
   return processResult(res, result);
 }
 
-export async function createCity(req: Request<{}, {}, CityDto>, res: Response) {
+export async function createCity(
+  req: Request<{}, {}, CreateCityRequest>,
+  res: Response
+) {
   const cityData = req.body;
   const useCase = container.resolve(CreateCityUseCase);
   const result = await useCase.handle(cityData);
@@ -32,7 +35,7 @@ export async function createCity(req: Request<{}, {}, CityDto>, res: Response) {
 }
 
 export async function updateCity(
-  req: Request<{ id: string }, {}, Omit<CityDto, 'id'>>,
+  req: Request<{ id: string }, {}, UpdateCityRequest>,
   res: Response
 ) {
   const { id } = req.params;
