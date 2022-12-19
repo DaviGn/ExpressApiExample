@@ -1,6 +1,5 @@
 import { Request, Response } from 'express';
-import { container } from 'tsyringe';
-
+import { resolve } from '@di/handler';
 import { CreateCityRequest, UpdateCityRequest } from '@request/city';
 import {
   ListCitiesUseCase,
@@ -9,17 +8,17 @@ import {
   UpdateCityUseCase,
   DeleteCityUseCase,
 } from '@useCases/city';
-import { processResult } from '@presenters';
+import { processResult } from '@presenters/index';
 
 export async function listCities(req: Request, res: Response) {
-  const useCase = container.resolve(ListCitiesUseCase);
+  const useCase = resolve(ListCitiesUseCase);
   const result = await useCase.handle();
   return processResult(res, result);
 }
 
 export async function getCity(req: Request<{ id: string }>, res: Response) {
   const { id } = req.params;
-  const useCase = container.resolve(GetCityUseCase);
+  const useCase = resolve(GetCityUseCase);
   const result = await useCase.handle(Number(id));
   return processResult(res, result);
 }
@@ -29,7 +28,7 @@ export async function createCity(
   res: Response
 ) {
   const cityData = req.body;
-  const useCase = container.resolve(CreateCityUseCase);
+  const useCase = resolve(CreateCityUseCase);
   const result = await useCase.handle(cityData);
   return processResult(res, result);
 }
@@ -41,7 +40,7 @@ export async function updateCity(
   const { id } = req.params;
   const cityData = req.body;
 
-  const useCase = container.resolve(UpdateCityUseCase);
+  const useCase = resolve(UpdateCityUseCase);
   const result = await useCase.handle({
     id: Number(id),
     ...cityData,
@@ -52,7 +51,7 @@ export async function updateCity(
 
 export async function deleteCity(req: Request<{ id: string }>, res: Response) {
   const { id } = req.params;
-  const useCase = container.resolve(DeleteCityUseCase);
+  const useCase = resolve(DeleteCityUseCase);
   const result = await useCase.handle(Number(id));
   return processResult(res, result);
 }

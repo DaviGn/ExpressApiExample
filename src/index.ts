@@ -1,5 +1,5 @@
-import { seed } from 'seed';
-import { runServer } from 'server';
+import { seed } from './startup/seed';
+import { runServer } from './startup/server';
 
 seed().then(() => {
   runServer();

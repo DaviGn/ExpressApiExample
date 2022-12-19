@@ -1,7 +1,11 @@
 import { inject, injectable } from 'tsyringe';
 
 import { ICityRepository } from '@repositories/city';
-import { IPresenter, NotFoundPresenter, DeletedPresenter } from '@presenters';
+import {
+  IPresenter,
+  NotFoundPresenter,
+  DeletedPresenter,
+} from '@presenters/index';
 
 @injectable()
 export class DeleteCityUseCase {

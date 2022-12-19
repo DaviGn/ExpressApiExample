@@ -1,12 +1,11 @@
 import 'reflect-metadata';
-import './di/container';
+import '@di/container';
 import 'express-async-errors';
 import express from 'express';
 
-import { seed } from './seed';
 import logs from '@middlewares/logs';
 import errors from '@middlewares/errors';
-import routes from './routes';
+import routes from '@routes/index';
 
 const port = process.env.PORT ?? 3333;
 

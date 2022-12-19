@@ -3,7 +3,7 @@ import { v4 } from 'uuid';
 
 import { CreateUserRequest } from '@request/user';
 import { IUserRepository } from '@repositories/user';
-import { IPresenter, SuccessPresenter } from '@presenters';
+import { IPresenter, SuccessPresenter } from '@presenters/index';
 import { crypt } from '@services/crypt';
 import { toUserResponse } from '@maps/user';
 

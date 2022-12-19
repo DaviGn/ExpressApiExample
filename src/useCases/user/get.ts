@@ -2,7 +2,11 @@ import { inject, injectable } from 'tsyringe';
 
 import { toUserCityResponse } from '@maps/user';
 import { IUserRepository } from '@repositories/user';
-import { IPresenter, NotFoundPresenter, SuccessPresenter } from '@presenters';
+import {
+  IPresenter,
+  NotFoundPresenter,
+  SuccessPresenter,
+} from '@presenters/index';
 
 @injectable()
 export class GetUserUseCase {

@@ -1,8 +1,7 @@
 import { inject, injectable } from 'tsyringe';
 
 import { ICityRepository } from '@repositories/city';
-import { IPresenter } from 'presenters/IPresenter';
-import { SuccessPresenter } from '@presenters';
+import { IPresenter, SuccessPresenter } from '@presenters/index';
 import { toCityResponse } from '@maps/city';
 
 @injectable()

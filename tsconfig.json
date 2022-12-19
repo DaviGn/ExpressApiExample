@@ -31,6 +31,7 @@
     "baseUrl": "./src" /* Specify the base directory to resolve non-relative module names. */,
     "paths": {
       "@domain/*": ["domain/*"],
+      "@di/*": ["di/*"],
       "@request/*": ["domain/requests/*"],
       "@responses/*": ["domain/responses/*"],
       "@maps/*": ["maps/*"],
@@ -38,9 +39,10 @@
       "@middlewares/*": ["middlewares/*"],
       "@services/*": ["services/*"],
       "@useCases/*": ["useCases/*"],
-      "@presenters": ["presenters/"],
+      "@presenters/*": ["presenters/*"],
       "@repositories/*": ["repositories/*"],
-      "@validators/*": ["validators/*"]
+      "@validators/*": ["validators/*"],
+      "@routes/*": ["routes/*"]
     } /* Specify a set of entries that re-map imports to additional lookup locations. */,
     // "rootDirs": [],                                   /* Allow multiple folders to be treated as one when resolving modules. */
     // "typeRoots": [],                                  /* Specify multiple folders that act like './node_modules/@types'. */

@@ -2,7 +2,11 @@ import { inject, injectable } from 'tsyringe';
 
 import { UpdateUserRequest } from '@request/user';
 import { IUserRepository } from '@repositories/user';
-import { IPresenter, NotFoundPresenter, SuccessPresenter } from '@presenters';
+import {
+  IPresenter,
+  NotFoundPresenter,
+  SuccessPresenter,
+} from '@presenters/index';
 import { toUserResponse } from '@maps/user';
 
 @injectable()

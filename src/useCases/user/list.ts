@@ -1,8 +1,8 @@
 import { inject, injectable } from 'tsyringe';
+
 import { toUserCityResponse } from '@maps/user';
 import { IUserRepository } from '@repositories/user';
-import { IPresenter } from 'presenters/IPresenter';
-import { SuccessPresenter } from '@presenters';
+import { IPresenter, SuccessPresenter } from '@presenters/index';
 
 @injectable()
 export class ListUsersUseCase {

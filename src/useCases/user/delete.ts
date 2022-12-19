@@ -2,7 +2,11 @@ import { inject, injectable } from 'tsyringe';
 
 import { IUserRepository } from '@repositories/user';
 import { NotFoundException } from '@domain/exceptions/notFoundException';
-import { IPresenter, NotFoundPresenter, DeletedPresenter } from '@presenters';
+import {
+  IPresenter,
+  NotFoundPresenter,
+  DeletedPresenter,
+} from '@presenters/index';
 
 @injectable()
 export class DeleteUserUseCase {
