@@ -10,7 +10,7 @@ import routes from './routes';
 
 const port = process.env.PORT ?? 3333;
 
-function runServer() {
+export function runServer() {
   const server = express();
   server.use(express.json());
   server.use(logs);
@@ -21,7 +21,3 @@ function runServer() {
     console.log('Server is running!');
   });
 }
-
-seed().then(() => {
-  runServer();
-});
