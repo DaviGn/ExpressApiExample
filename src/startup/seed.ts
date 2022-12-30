@@ -1,22 +1,18 @@
 import { PrismaClient } from '@prisma/client';
+import { seedBrands, seedCategories, seedCities } from './seeds';
 
 const prisma = new PrismaClient();
 
-const runMigration = process.env.SERVER_RUN_SEED
+const runSeed = process.env.SERVER_RUN_SEED
   ? !!process.env.SERVER_RUN_SEED
   : false;
 
 export async function seed() {
-  if (!runMigration) return;
+  if (!runSeed) return;
 
   console.log('Running seed...');
 
-  await prisma.city.upsert({
-    where: { id: 1 },
-    update: {},
-    create: {
-      name: 'Santo André',
-      uf: 'SP',
-    },
-  });
+  await seedCities(prisma);
+  await seedBrands(prisma);
+  await seedCategories(prisma);
 }

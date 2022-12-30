@@ -9,5 +9,7 @@ container.register<ICacheService>('CacheService', {
   useValue: new RedisCacheService(),
 });
 
+import './brand';
+import './category';
 import './city';
 import './user';

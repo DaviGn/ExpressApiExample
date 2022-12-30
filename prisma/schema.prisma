@@ -23,4 +23,48 @@ model User {
   salt String
   city  City       @relation(fields: [cityId], references: [id])
   cityId Int
+  purchases Purchase[]
+}
+
+model Brand {
+  id    Int         @id @default(autoincrement())
+  name  String
+  products Product[]
+}
+
+model Category {
+  id    Int         @id @default(autoincrement())
+  name  String
+  products Product[]
+}
+
+model Product {
+  id  String  @id
+  description String
+  unitValue Decimal
+  qtd Int
+  brandId Int
+  brand Brand @relation(fields: [brandId], references: [id])
+  categoryId Int
+  category Category @relation(fields: [categoryId], references: [id])
+
+  purchaseItems PurchaseItems[]
+}
+
+model Purchase {
+  id String @id
+  userId String
+  user User @relation(fields: [userId], references: [id])
+  totalValue Decimal
+  items PurchaseItems[]
+}
+
+model PurchaseItems {
+  id Int @id @default(autoincrement())
+  purchaseId String
+  purchase Purchase @relation(fields: [purchaseId], references: [id])
+  productId String
+  product Product @relation(fields: [productId], references: [id])
+  qtd Int
+  unitValue Decimal
 }
