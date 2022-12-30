@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "env:prod": "node ./envs/set.ts prod",
-    "env:dev": "node ./envs/set.ts dev",
+    "env:prod": "node ./src/envs/set.ts prod",
+    "env:dev": "node ./src/envs/set.ts dev",
     "dev:server": "ts-node-dev -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules ./src/index.ts",
     "server": "node -r ts-node/register/transpile-only -r tsconfig-paths/register ./dist/index.js",
     "prisma:generate": "prisma generate --schema=./prisma/schema.prisma",
