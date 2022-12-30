@@ -6,6 +6,7 @@ import {
   IPresenter,
   SuccessPresenter,
   UnathorizedPresenter,
+  ErrorPresenter,
 } from '@presenters/index';
 import { AuthRequest } from '@requests/auth';
 import { hash } from '@services/crypt';
@@ -16,6 +17,10 @@ export class AuthenticateUserUseCase {
   constructor(@inject('UserRepository') private repository: IUserRepository) {}
 
   async handle({ email, password }: AuthRequest): Promise<IPresenter> {
+    if (!JwtSignKey) {
+      return new ErrorPresenter({ message: 'JWT sign key is not valid!' });
+    }
+
     const user = await this.repository.findByEmail(email);
 
     if (!user) {

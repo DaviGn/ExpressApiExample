@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { resolve } from '@di/handler';
-import { CreateUserRequest, UpdateUserRequest } from '@request/user';
+import { CreateUserRequest, UpdateUserRequest } from '@requests/user';
 import {
   ListUsersUseCase,
   GetUserUseCase,

@@ -1,1 +1,1 @@
-export const JwtSignKey = process.env.JwtSignKey;
+export const JwtSignKey: string = process.env.JwtSignKey || '';

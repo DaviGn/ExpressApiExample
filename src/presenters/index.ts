@@ -2,6 +2,7 @@ import { ConflictPresenter } from './conflict';
 import { NotFoundPresenter } from './notFound';
 import { SuccessPresenter } from './success';
 import { DeletedPresenter } from './deleted';
+import { ErrorPresenter } from './error';
 import { processResult } from './result';
 import { UnathorizedPresenter } from './unathorized';
 
@@ -15,6 +16,7 @@ export {
   NotFoundPresenter,
   DeletedPresenter,
   SuccessPresenter,
+  ErrorPresenter,
   UnathorizedPresenter,
   IPresenter,
   processResult,

@@ -1,6 +1,6 @@
 import { inject, injectable } from 'tsyringe';
 
-import { UpdateUserRequest } from '@request/user';
+import { UpdateUserRequest } from '@requests/user';
 import { IUserRepository } from '@repositories/user';
 import {
   IPresenter,

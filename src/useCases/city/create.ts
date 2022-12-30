@@ -2,7 +2,7 @@ import { inject, injectable } from 'tsyringe';
 
 import { ICityRepository } from '@repositories/city';
 import { IPresenter, SuccessPresenter } from '@presenters/index';
-import { CreateCityRequest } from '@request/city';
+import { CreateCityRequest } from '@requests/city';
 
 @injectable()
 export class CreateCityUseCase {

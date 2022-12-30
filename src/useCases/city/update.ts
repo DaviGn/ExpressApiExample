@@ -6,7 +6,7 @@ import {
   NotFoundPresenter,
   SuccessPresenter,
 } from '@presenters/index';
-import { UpdateCityRequest } from '@request/city';
+import { UpdateCityRequest } from '@requests/city';
 
 @injectable()
 export class UpdateCityUseCase {

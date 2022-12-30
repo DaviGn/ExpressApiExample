@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { resolve } from '@di/handler';
-import { CreateCityRequest, UpdateCityRequest } from '@request/city';
+import { CreateCityRequest, UpdateCityRequest } from '@requests/city';
 import {
   ListCitiesUseCase,
   GetCityUseCase,

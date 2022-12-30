@@ -12,13 +12,7 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: 123456
-      PGDATA: /data/postgres
-    # volumes:
-    #   - postgres:/data/postgres
+      POSTGRES_HOST_AUTH_METHOD: password
     ports:
       - '5432:5432'
     restart: unless-stopped
-
-volumes:
-  postgres:
-    driver: local

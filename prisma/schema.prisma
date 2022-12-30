@@ -3,14 +3,10 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
+  // provider = "sqlite"
   url      = env("DATABASE_URL")
 }
-
-// datasource db {
-//   provider = "postgresql"
-//   url      = env("DATABASE_URL")
-// }
 
 model City {
   id    Int         @id @default(autoincrement())

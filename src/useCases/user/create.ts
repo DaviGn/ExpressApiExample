@@ -1,7 +1,7 @@
 import { inject, injectable } from 'tsyringe';
 import { v4 } from 'uuid';
 
-import { CreateUserRequest } from '@request/user';
+import { CreateUserRequest } from '@requests/user';
 import { IUserRepository } from '@repositories/user';
 import { IPresenter, SuccessPresenter } from '@presenters/index';
 import { crypt } from '@services/crypt';
