@@ -48,18 +48,19 @@ model Product {
   categoryId Int
   category Category @relation(fields: [categoryId], references: [id])
 
-  purchaseItems PurchaseItems[]
+  purchaseItems PurchaseItem[]
 }
 
 model Purchase {
   id String @id
   userId String
   user User @relation(fields: [userId], references: [id])
+  date DateTime @default(now())
   totalValue Decimal
-  items PurchaseItems[]
+  items PurchaseItem[]
 }
 
-model PurchaseItems {
+model PurchaseItem {
   id Int @id @default(autoincrement())
   purchaseId String
   purchase Purchase @relation(fields: [purchaseId], references: [id])

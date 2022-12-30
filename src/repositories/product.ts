@@ -1,12 +1,15 @@
-import { ProductComplete } from '@domain/types/product';
+import { ProductComplete, ProductBrand } from '@domain/types/product';
 import { PrismaClient, Product } from '@prisma/client';
 import { injectable, inject } from 'tsyringe';
 
 export interface IProductRepository {
   list(): Promise<ProductComplete[]>;
-  findById(id: string): Promise<ProductComplete | null>;
-  create(product: Omit<Product, 'id'>): Promise<Product>;
+  findById(id: string): Promise<Product | null>;
+  findByIds(ids: string[]): Promise<ProductBrand[]>;
+  findCompleteById(id: string): Promise<ProductComplete | null>;
+  create(product: Product): Promise<Product>;
   update(product: Product): Promise<Product>;
+  decreaseQtd(id: string, qtd: number): Promise<void>;
   delete(id: number): Promise<void>;
 }
 
@@ -28,7 +31,28 @@ export class ProductRepository implements IProductRepository {
     });
   }
 
-  async findById(id: string): Promise<ProductComplete | null> {
+  async findById(id: string): Promise<Product | null> {
+    return await this.prisma.product.findFirst({
+      where: {
+        id: id,
+      },
+    });
+  }
+
+  async findByIds(ids: string[]): Promise<ProductBrand[]> {
+    return await this.prisma.product.findMany({
+      where: {
+        id: {
+          in: ids,
+        },
+      },
+      include: {
+        brand: true,
+      },
+    });
+  }
+
+  async findCompleteById(id: string): Promise<ProductComplete | null> {
     return await this.prisma.product.findFirst({
       where: {
         id: id,
@@ -55,6 +79,19 @@ export class ProductRepository implements IProductRepository {
       },
     });
     return updatedProduct;
+  }
+
+  async decreaseQtd(id: string, qtd: number): Promise<void> {
+    await this.prisma.product.update({
+      data: {
+        qtd: {
+          decrement: qtd,
+        },
+      },
+      where: {
+        id,
+      },
+    });
   }
 
   async delete(id: number): Promise<void> {

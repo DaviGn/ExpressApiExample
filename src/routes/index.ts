@@ -6,6 +6,7 @@ import authRoutes from './auth.routes';
 import brandRoutes from './brands.routes';
 import categoryRoutes from './categories.routes';
 import productsRoutes from './products.routes';
+import purchasesRoutes from './purchase.routes';
 
 import { isAuthenticated } from '@middlewares/auth';
 
@@ -27,5 +28,6 @@ routes.use('/users', userRoutes);
 
 // Routes that require auth
 routes.use(isAuthenticated);
+routes.use('/purchases', purchasesRoutes);
 
 export default routes;

@@ -1,5 +1,5 @@
 import { inject, injectable } from 'tsyringe';
-import { User, City } from '@prisma/client';
+
 import { toUserCityResponse } from '@maps/user';
 import { IUserRepository } from '@repositories/user';
 import {
@@ -9,8 +9,7 @@ import {
 } from '@presenters/index';
 import { ICacheService } from '@services/cache';
 import { CacheService, UserRepository } from '@di/tokens';
-
-type CacheResponse = User & { city: City };
+import { UserDataResponse } from '@responses/user';
 
 @injectable()
 export class GetUserUseCase {
@@ -21,14 +20,13 @@ export class GetUserUseCase {
 
   async handle(id: string): Promise<IPresenter> {
     const cachedUserKey = `user-${id}`;
-    const cachedUser = await this.cacheService.get<CacheResponse>(
+    const cachedUser = await this.cacheService.get<UserDataResponse>(
       cachedUserKey
     );
 
     if (cachedUser) {
       console.log(`User ${id} is cached, returning it`);
-      const result = toUserCityResponse(cachedUser);
-      return new SuccessPresenter(result);
+      return new SuccessPresenter(cachedUser);
     }
 
     console.log(`Getting user ${id} from database`);

@@ -14,3 +14,5 @@ import './category';
 import './city';
 import './user';
 import './product';
+import './purchase';
+import './purchaseItem';

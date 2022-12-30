@@ -30,7 +30,7 @@ export class GetProductUseCase {
     }
 
     console.log(`Getting Product ${id} from database`);
-    const product = await this.repository.findById(id);
+    const product = await this.repository.findCompleteById(id);
 
     if (!product) {
       return new NotFoundPresenter({ message: 'Product not found!' });

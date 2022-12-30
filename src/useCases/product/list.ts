@@ -5,7 +5,7 @@ import { IProductRepository } from '@repositories/product';
 import { IPresenter, SuccessPresenter } from '@presenters/index';
 import { CacheService, ProductRepository } from '@di/tokens';
 import { ICacheService } from '@services/cache';
-import { ProductComplete } from '@domain/types/product';
+import { ProductResponse } from '@responses/product';
 
 @injectable()
 export class ListProductsUseCase {
@@ -16,23 +16,20 @@ export class ListProductsUseCase {
 
   async handle(): Promise<IPresenter> {
     const tokenCache = 'products';
-    const cachedProducts = await this.cacheService.get<ProductComplete[]>(
+    const cachedProducts = await this.cacheService.get<ProductResponse[]>(
       tokenCache
     );
 
     if (cachedProducts) {
       console.log(`Products are cached, returning it`);
-      const result = this.getResponse(cachedProducts);
-      return new SuccessPresenter(result);
+      return new SuccessPresenter(cachedProducts);
     }
 
     const products = await this.repository.list();
-    const productsResponse = this.getResponse(products);
+    const productsResponse = products.map((product) =>
+      toProductResponse(product)
+    );
     await this.cacheService.set(tokenCache, productsResponse);
     return new SuccessPresenter(productsResponse);
-  }
-
-  private getResponse(products: CacheResponse[]) {
-    return products.map((Product) => toProductResponse(Product));
   }
 }
