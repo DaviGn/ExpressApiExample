@@ -26,6 +26,11 @@ export class UserRepository implements IUserRepository {
       include: {
         city: true,
       },
+      orderBy: [
+        {
+          name: 'asc',
+        },
+      ],
     });
   }
 

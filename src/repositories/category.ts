@@ -14,7 +14,13 @@ export class CategoryRepository implements ICategoryRepository {
   constructor(@inject('PrismaClient') private readonly prisma: PrismaClient) {}
 
   async list(): Promise<Category[]> {
-    return await this.prisma.category.findMany();
+    return await this.prisma.category.findMany({
+      orderBy: [
+        {
+          name: 'asc',
+        },
+      ],
+    });
   }
 
   async findById(id: number): Promise<Category | null> {

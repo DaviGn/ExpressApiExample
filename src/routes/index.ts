@@ -5,6 +5,7 @@ import citiesRoutes from './cities.routes';
 import authRoutes from './auth.routes';
 import brandRoutes from './brands.routes';
 import categoryRoutes from './categories.routes';
+import productsRoutes from './products.routes';
 
 import { isAuthenticated } from '@middlewares/auth';
 
@@ -17,13 +18,14 @@ routes.get('/', (_, res) => {
 });
 
 routes.use('/auth', authRoutes);
+routes.use('/cities', citiesRoutes);
 routes.use('/brands', brandRoutes);
 routes.use('/categories', categoryRoutes);
+routes.use('/products', productsRoutes);
 
 routes.use('/users', userRoutes);
 
-// Require auth
+// Routes that require auth
 routes.use(isAuthenticated);
-routes.use('/cities', citiesRoutes);
 
 export default routes;

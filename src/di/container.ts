@@ -13,3 +13,4 @@ import './brand';
 import './category';
 import './city';
 import './user';
+import './product';

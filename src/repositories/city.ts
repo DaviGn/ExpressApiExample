@@ -14,7 +14,13 @@ export class CityRepository implements ICityRepository {
   constructor(@inject('PrismaClient') private readonly prisma: PrismaClient) {}
 
   async list(): Promise<City[]> {
-    return await this.prisma.city.findMany();
+    return await this.prisma.city.findMany({
+      orderBy: [
+        {
+          name: 'asc',
+        },
+      ],
+    });
   }
 
   async findById(id: number): Promise<City | null> {

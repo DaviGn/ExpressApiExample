@@ -14,7 +14,13 @@ export class BrandRepository implements IBrandRepository {
   constructor(@inject('PrismaClient') private readonly prisma: PrismaClient) {}
 
   async list(): Promise<Brand[]> {
-    return await this.prisma.brand.findMany();
+    return await this.prisma.brand.findMany({
+      orderBy: [
+        {
+          name: 'asc',
+        },
+      ],
+    });
   }
 
   async findById(id: number): Promise<Brand | null> {

@@ -8,17 +8,20 @@ import {
   SuccessPresenter,
 } from '@presenters/index';
 import { ICacheService } from '@services/cache';
+import { CacheService, UserRepository } from '@di/tokens';
+
+type CacheResponse = User & { city: City };
 
 @injectable()
 export class GetUserUseCase {
   constructor(
-    @inject('UserRepository') private repository: IUserRepository,
-    @inject('CacheService') private cacheService: ICacheService
+    @inject(UserRepository) private repository: IUserRepository,
+    @inject(CacheService) private cacheService: ICacheService
   ) {}
 
   async handle(id: string): Promise<IPresenter> {
     const cachedUserKey = `user-${id}`;
-    const cachedUser = await this.cacheService.get<User & { city: City }>(
+    const cachedUser = await this.cacheService.get<CacheResponse>(
       cachedUserKey
     );
 

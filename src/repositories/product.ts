@@ -1,9 +1,10 @@
-import { Product, PrismaClient } from '@prisma/client';
+import { ProductComplete } from '@domain/types/product';
+import { PrismaClient, Product } from '@prisma/client';
 import { injectable, inject } from 'tsyringe';
 
 export interface IProductRepository {
-  list(): Promise<Product[]>;
-  findById(id: string): Promise<Product | null>;
+  list(): Promise<ProductComplete[]>;
+  findById(id: string): Promise<ProductComplete | null>;
   create(product: Omit<Product, 'id'>): Promise<Product>;
   update(product: Product): Promise<Product>;
   delete(id: number): Promise<void>;
@@ -13,14 +14,28 @@ export interface IProductRepository {
 export class ProductRepository implements IProductRepository {
   constructor(@inject('PrismaClient') private readonly prisma: PrismaClient) {}
 
-  async list(): Promise<Product[]> {
-    return await this.prisma.product.findMany();
+  async list(): Promise<ProductComplete[]> {
+    return await this.prisma.product.findMany({
+      include: {
+        brand: true,
+        category: true,
+      },
+      orderBy: [
+        {
+          description: 'asc',
+        },
+      ],
+    });
   }
 
-  async findById(id: string): Promise<Product | null> {
+  async findById(id: string): Promise<ProductComplete | null> {
     return await this.prisma.product.findFirst({
       where: {
         id: id,
+      },
+      include: {
+        brand: true,
+        category: true,
       },
     });
   }
