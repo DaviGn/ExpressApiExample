@@ -24,7 +24,7 @@ export async function getCity(req: Request<{ id: string }>, res: Response) {
 }
 
 export async function createCity(
-    req: Request<{}, {}, CreateCityRequest>,
+    req: Request<object, object, CreateCityRequest>,
     res: Response
 ) {
     const cityData = req.body;
@@ -34,7 +34,7 @@ export async function createCity(
 }
 
 export async function updateCity(
-    req: Request<{ id: string }, {}, UpdateCityRequest>,
+    req: Request<{ id: string }, object, UpdateCityRequest>,
     res: Response
 ) {
     const { id } = req.params;

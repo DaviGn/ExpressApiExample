@@ -1,4 +1,5 @@
 import { ProductResponse } from './product';
+
 interface CreatePurchaseItemResponse {
     productId: string;
     description: string;

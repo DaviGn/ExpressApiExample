@@ -2,7 +2,7 @@ import { inject, injectable } from 'tsyringe';
 
 import { CreateBrandRequest } from '@requests/brand';
 import { IBrandRepository } from '@repositories/brand';
-import { IPresenter, SuccessPresenter } from '@presenters/index';
+import { CreatedPresenter, IPresenter } from '@presenters/index';
 import { toBrandResponse } from '@maps/brand';
 
 @injectable()
@@ -17,6 +17,6 @@ export class CreateBrandUseCase {
         });
 
         const result = toBrandResponse(createdBrand);
-        return new SuccessPresenter(result);
+        return new CreatedPresenter(result);
     }
 }

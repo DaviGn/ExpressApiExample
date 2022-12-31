@@ -39,7 +39,7 @@ export class UserRepository implements IUserRepository {
     async findById(id: string): Promise<(User & { city: City }) | null> {
         return await this.prisma.user.findFirst({
             where: {
-                id: id
+                id
             },
             include: {
                 city: true
@@ -50,7 +50,7 @@ export class UserRepository implements IUserRepository {
     async findByEmail(email: string): Promise<User | null> {
         return await this.prisma.user.findFirst({
             where: {
-                email: email
+                email
             }
         });
     }
@@ -75,7 +75,7 @@ export class UserRepository implements IUserRepository {
     async delete(id: string): Promise<void> {
         await this.prisma.user.delete({
             where: {
-                id: id
+                id
             }
         });
     }

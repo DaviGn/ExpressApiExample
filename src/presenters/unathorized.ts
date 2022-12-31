@@ -1,7 +1,7 @@
-import { IPresenter } from './';
+import { IPresenter } from '.';
 
 export class UnathorizedPresenter implements IPresenter {
-    statusCode: number = 401;
+    statusCode = 401;
     response: any;
 
     constructor(response: any) {

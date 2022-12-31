@@ -2,7 +2,7 @@ import { inject, injectable } from 'tsyringe';
 
 import { CreateCategoryRequest } from '@requests/category';
 import { ICategoryRepository } from '@repositories/category';
-import { IPresenter, SuccessPresenter } from '@presenters/index';
+import { IPresenter, CreatedPresenter } from '@presenters/index';
 import { toCategoryResponse } from '@maps/category';
 
 @injectable()
@@ -17,6 +17,6 @@ export class CreateCategoryUseCase {
         });
 
         const result = toCategoryResponse(createdCategory);
-        return new SuccessPresenter(result);
+        return new CreatedPresenter(result);
     }
 }

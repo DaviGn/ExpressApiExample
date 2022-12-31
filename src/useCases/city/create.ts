@@ -1,7 +1,7 @@
 import { inject, injectable } from 'tsyringe';
 
 import { ICityRepository } from '@repositories/city';
-import { IPresenter, SuccessPresenter } from '@presenters/index';
+import { IPresenter, CreatedPresenter } from '@presenters/index';
 import { CreateCityRequest } from '@requests/city';
 
 @injectable()
@@ -16,6 +16,6 @@ export class CreateCityUseCase {
             uf: user.uf
         });
 
-        return new SuccessPresenter(createdCity);
+        return new CreatedPresenter(createdCity);
     }
 }

@@ -14,7 +14,7 @@ export async function listPurchases(req: Request, res: Response) {
 }
 
 export async function createPurchase(
-    req: Request<{}, {}, Omit<PurchaseRequest, 'userId'>>,
+    req: Request<object, object, Omit<PurchaseRequest, 'userId'>>,
     res: Response
 ) {
     const useCase = resolve(CreatePurchaseUseCase);

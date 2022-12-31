@@ -1,5 +1,5 @@
 export class ConflictException {
-    statusCode: number = 409;
+    statusCode = 409;
     field: string;
     message: string;
 

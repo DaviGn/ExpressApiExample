@@ -28,7 +28,7 @@ export class CityRepository implements ICityRepository {
     async findById(id: number): Promise<City | null> {
         return await this.prisma.city.findFirst({
             where: {
-                id: id
+                id
             }
         });
     }
@@ -53,7 +53,7 @@ export class CityRepository implements ICityRepository {
     async delete(id: number): Promise<void> {
         await this.prisma.city.delete({
             where: {
-                id: id
+                id
             }
         });
     }

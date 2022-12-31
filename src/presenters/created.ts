@@ -1,7 +1,7 @@
 import { IPresenter } from '.';
 
-export class ConflictPresenter implements IPresenter {
-    statusCode = 409;
+export class CreatedPresenter implements IPresenter {
+    statusCode = 201;
     response: any;
 
     constructor(response: any) {

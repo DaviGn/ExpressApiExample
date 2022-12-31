@@ -3,7 +3,7 @@ import { v4 } from 'uuid';
 
 import { CreateUserRequest } from '@requests/user';
 import { IUserRepository } from '@repositories/user';
-import { IPresenter, SuccessPresenter } from '@presenters/index';
+import { IPresenter, CreatedPresenter } from '@presenters/index';
 import { crypt } from '@services/crypt';
 import { toUserResponse } from '@maps/user';
 
@@ -31,6 +31,6 @@ export class CreateUserUseCase {
         });
 
         const result = toUserResponse(createdUser);
-        return new SuccessPresenter(result);
+        return new CreatedPresenter(result);
     }
 }

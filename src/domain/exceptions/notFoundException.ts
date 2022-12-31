@@ -1,7 +1,7 @@
 import { IException } from './iException';
 
 export class NotFoundException implements IException {
-    statusCode: number = 404;
+    statusCode = 404;
     message: string;
 
     constructor(message: string) {

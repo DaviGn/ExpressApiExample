@@ -12,11 +12,11 @@ import { isAuthenticated } from '@middlewares/auth';
 
 const routes = Router();
 
-routes.get('/', (_, res) => {
-    return res.json({
+routes.get('/', (_, res) =>
+    res.json({
         message: 'Hello World!'
-    });
-});
+    })
+);
 
 routes.use('/auth', authRoutes);
 routes.use('/cities', citiesRoutes);

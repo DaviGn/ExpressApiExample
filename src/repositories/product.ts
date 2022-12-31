@@ -36,7 +36,7 @@ export class ProductRepository implements IProductRepository {
     async findById(id: string): Promise<Product | null> {
         return await this.prisma.product.findFirst({
             where: {
-                id: id
+                id
             }
         });
     }
@@ -57,7 +57,7 @@ export class ProductRepository implements IProductRepository {
     async findCompleteById(id: string): Promise<ProductComplete | null> {
         return await this.prisma.product.findFirst({
             where: {
-                id: id
+                id
             },
             include: {
                 brand: true,
@@ -99,7 +99,7 @@ export class ProductRepository implements IProductRepository {
     async delete(id: number): Promise<void> {
         await this.prisma.city.delete({
             where: {
-                id: id
+                id
             }
         });
     }

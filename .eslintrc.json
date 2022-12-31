@@ -25,7 +25,11 @@
         "camelcase": "off",
         "class-methods-use-this": "off",
         "comma-dangle": "off",
+        "consistent-return": "warn",
+        "eol-last": "off",
+        "function-paren-newline": "off",
         "import/extensions": "off",
+        "implicit-arrow-linebreak": "off",
         "import/no-duplicates": "off",
         "import/no-extraneous-dependencies": [
             "error",
@@ -69,6 +73,7 @@
             }
         ],
         "object-shorthand": "warn",
+        "prefer-promise-reject-errors": "warn",
         "prettier/prettier": 0,
         "vars-on-top": "off"
     }

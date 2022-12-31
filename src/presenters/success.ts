@@ -1,7 +1,7 @@
-import { IPresenter } from './';
+import { IPresenter } from '.';
 
 export class SuccessPresenter implements IPresenter {
-    statusCode: number = 200;
+    statusCode = 200;
     response: any;
 
     constructor(response: any) {

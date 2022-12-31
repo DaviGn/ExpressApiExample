@@ -28,7 +28,7 @@ export class CategoryRepository implements ICategoryRepository {
     async findById(id: number): Promise<Category | null> {
         return await this.prisma.category.findFirst({
             where: {
-                id: id
+                id
             }
         });
     }
@@ -53,7 +53,7 @@ export class CategoryRepository implements ICategoryRepository {
     async delete(id: number): Promise<void> {
         await this.prisma.city.delete({
             where: {
-                id: id
+                id
             }
         });
     }

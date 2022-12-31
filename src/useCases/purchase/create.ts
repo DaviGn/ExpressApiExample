@@ -5,7 +5,7 @@ import { format } from 'date-fns';
 
 import { IPurchaseRepository } from '@repositories/purchase';
 import { IPurchaseItemRepository } from '@repositories/purchaseItem';
-import { IPresenter, SuccessPresenter } from '@presenters/index';
+import { IPresenter, CreatedPresenter } from '@presenters/index';
 import { PurchaseItemRequest, PurchaseRequest } from '@requests/purchase';
 import { IProductRepository } from '@repositories/product';
 import { CreatePurchaseResponse } from '@responses/purchase';
@@ -62,7 +62,7 @@ export class CreatePurchaseUseCase {
             formattedDate,
             productsData
         );
-        return new SuccessPresenter(response);
+        return new CreatedPresenter(response);
     }
 
     async savePurchase(
@@ -109,7 +109,7 @@ export class CreatePurchaseUseCase {
         products: ProductBrand[]
     ): ProductData[] {
         return items.map((x) => {
-            const product = products.find((y) => y.id == x.productId);
+            const product = products.find((y) => y.id === x.productId);
 
             return {
                 id: x.productId,

@@ -3,6 +3,6 @@ interface BaseCityRequest {
     uf: string;
 }
 
-export interface CreateCityRequest extends BaseCityRequest {}
+export type CreateCityRequest = BaseCityRequest;
 
-export interface UpdateCityRequest extends BaseCityRequest {}
+export type UpdateCityRequest = BaseCityRequest;

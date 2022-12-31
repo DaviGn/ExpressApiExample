@@ -24,7 +24,7 @@ export async function getUser(req: Request<{ id: string }>, res: Response) {
 }
 
 export async function createUser(
-    req: Request<{}, {}, CreateUserRequest>,
+    req: Request<object, object, CreateUserRequest>,
     res: Response
 ) {
     const userData = req.body;
@@ -34,7 +34,7 @@ export async function createUser(
 }
 
 export async function updateUser(
-    req: Request<{ id: string }, {}, UpdateUserRequest>,
+    req: Request<{ id: string }, object, UpdateUserRequest>,
     res: Response
 ) {
     const { id } = req.params;

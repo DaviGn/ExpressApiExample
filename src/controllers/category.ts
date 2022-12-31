@@ -27,7 +27,7 @@ export async function getCategory(req: Request<{ id: string }>, res: Response) {
 }
 
 export async function createCategory(
-    req: Request<{}, {}, CreateCategoryRequest>,
+    req: Request<object, object, CreateCategoryRequest>,
     res: Response
 ) {
     const categoryData = req.body;
@@ -37,7 +37,7 @@ export async function createCategory(
 }
 
 export async function updateCategory(
-    req: Request<{ id: string }, {}, Omit<UpdateCategoryRequest, 'id'>>,
+    req: Request<{ id: string }, object, Omit<UpdateCategoryRequest, 'id'>>,
     res: Response
 ) {
     const { id } = req.params;

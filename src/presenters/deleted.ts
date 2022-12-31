@@ -1,7 +1,7 @@
-import { IPresenter } from './';
+import { IPresenter } from '.';
 
 export class DeletedPresenter implements IPresenter {
-    statusCode: number = 204;
+    statusCode = 204;
     response: any;
 
     constructor(response?: any) {

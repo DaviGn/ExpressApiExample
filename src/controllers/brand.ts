@@ -24,7 +24,7 @@ export async function getBrand(req: Request<{ id: string }>, res: Response) {
 }
 
 export async function createBrand(
-    req: Request<{}, {}, CreateBrandRequest>,
+    req: Request<object, object, CreateBrandRequest>,
     res: Response
 ) {
     const cityData = req.body;
@@ -34,7 +34,7 @@ export async function createBrand(
 }
 
 export async function updateBrand(
-    req: Request<{ id: string }, {}, Omit<UpdateBrandRequest, 'id'>>,
+    req: Request<{ id: string }, object, Omit<UpdateBrandRequest, 'id'>>,
     res: Response
 ) {
     const { id } = req.params;

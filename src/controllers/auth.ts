@@ -5,7 +5,7 @@ import { processResult } from '@presenters/index';
 import { AuthRequest } from '@domain/requests/auth';
 
 export async function authenticate(
-    req: Request<{}, {}, AuthRequest>,
+    req: Request<object, object, AuthRequest>,
     res: Response
 ) {
     const authData = req.body;

@@ -21,7 +21,7 @@ export class ListProductsUseCase {
         );
 
         if (cachedProducts) {
-            console.log(`Products are cached, returning it`);
+            console.log('Products are cached, returning it');
             return new SuccessPresenter(cachedProducts);
         }
 

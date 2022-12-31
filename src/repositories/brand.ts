@@ -28,7 +28,7 @@ export class BrandRepository implements IBrandRepository {
     async findById(id: number): Promise<Brand | null> {
         return await this.prisma.brand.findFirst({
             where: {
-                id: id
+                id
             }
         });
     }
@@ -53,7 +53,7 @@ export class BrandRepository implements IBrandRepository {
     async delete(id: number): Promise<void> {
         await this.prisma.city.delete({
             where: {
-                id: id
+                id
             }
         });
     }

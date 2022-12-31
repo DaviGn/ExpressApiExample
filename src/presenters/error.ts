@@ -1,7 +1,7 @@
-import { IPresenter } from './';
+import { IPresenter } from '.';
 
 export class ErrorPresenter implements IPresenter {
-    statusCode: number = 500;
+    statusCode = 500;
     response: any;
 
     constructor(response?: any) {

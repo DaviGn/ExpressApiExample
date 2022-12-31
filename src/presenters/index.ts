@@ -1,4 +1,5 @@
 import { ConflictPresenter } from './conflict';
+import { CreatedPresenter } from './created';
 import { NotFoundPresenter } from './notFound';
 import { SuccessPresenter } from './success';
 import { DeletedPresenter } from './deleted';
@@ -13,6 +14,7 @@ interface IPresenter {
 
 export {
     ConflictPresenter,
+    CreatedPresenter,
     NotFoundPresenter,
     DeletedPresenter,
     SuccessPresenter,

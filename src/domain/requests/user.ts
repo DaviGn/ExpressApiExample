@@ -8,4 +8,4 @@ export interface CreateUserRequest extends BaseUserRequest {
     password: string;
 }
 
-export interface UpdateUserRequest extends BaseUserRequest {}
+export type UpdateUserRequest = BaseUserRequest;
