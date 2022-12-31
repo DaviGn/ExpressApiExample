@@ -6,8 +6,6 @@ export interface IPurchaseRepository {
   listComplete(userId: string): Promise<PurchaseComplete[]>;
   // findById(id: string): Promise<ProductComplete | null>;
   create(purchase: Purchase): Promise<Purchase>;
-  // update(product: Product): Promise<Product>;
-  // delete(id: number): Promise<void>;
 }
 
 @injectable()
@@ -52,22 +50,4 @@ export class PurchaseRepository implements IPurchaseRepository {
     });
     return createdPurchase;
   }
-
-  // async update(product: Product): Promise<Product> {
-  //   const updatedProduct = await this.prisma.product.update({
-  //     data: product,
-  //     where: {
-  //       id: product.id,
-  //     },
-  //   });
-  //   return updatedProduct;
-  // }
-
-  // async delete(id: number): Promise<void> {
-  //   await this.prisma.city.delete({
-  //     where: {
-  //       id: id,
-  //     },
-  //   });
-  // }
 }
