@@ -2,12 +2,12 @@ import { container } from 'tsyringe';
 
 import { IUserRepository, UserRepository } from '@repositories/user';
 import {
-  ListUsersUseCase,
-  GetUserUseCase,
-  CreateUserUseCase,
-  UpdateUserUseCase,
-  DeleteUserUseCase,
-  AuthenticateUserUseCase,
+    ListUsersUseCase,
+    GetUserUseCase,
+    CreateUserUseCase,
+    UpdateUserUseCase,
+    DeleteUserUseCase,
+    AuthenticateUserUseCase
 } from '@useCases/user';
 
 // Repositories

@@ -1,12 +1,12 @@
 import { container } from 'tsyringe';
 
 import {
-  IPurchaseItemRepository,
-  PurchaseItemRepository,
+    IPurchaseItemRepository,
+    PurchaseItemRepository
 } from '@repositories/purchaseItem';
 
 // Repositories
 container.register<IPurchaseItemRepository>(
-  'PurchaseItemRepository',
-  PurchaseItemRepository
+    'PurchaseItemRepository',
+    PurchaseItemRepository
 );

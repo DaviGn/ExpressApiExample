@@ -7,10 +7,10 @@ const purchasesRoutes = Router();
 
 purchasesRoutes.get('/', listPurchases);
 purchasesRoutes.post(
-  '/',
-  createPurchaseValidations,
-  validationsMiddleware,
-  createPurchase
+    '/',
+    createPurchaseValidations,
+    validationsMiddleware,
+    createPurchase
 );
 
 export default purchasesRoutes;

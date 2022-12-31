@@ -2,26 +2,26 @@ import { inject, injectable } from 'tsyringe';
 import { toCategoryResponse } from '@maps/category';
 import { ICategoryRepository } from '@repositories/category';
 import {
-  IPresenter,
-  NotFoundPresenter,
-  SuccessPresenter,
+    IPresenter,
+    NotFoundPresenter,
+    SuccessPresenter
 } from '@presenters/index';
 
 @injectable()
 export class GetCategoryUseCase {
-  constructor(
-    @inject('CategoryRepository') private repository: ICategoryRepository
-  ) {}
+    constructor(
+        @inject('CategoryRepository') private repository: ICategoryRepository
+    ) {}
 
-  async handle(id: number): Promise<IPresenter> {
-    console.log(`Getting category ${id} from database`);
-    const category = await this.repository.findById(id);
+    async handle(id: number): Promise<IPresenter> {
+        console.log(`Getting category ${id} from database`);
+        const category = await this.repository.findById(id);
 
-    if (!category) {
-      return new NotFoundPresenter({ message: 'Category not found!' });
+        if (!category) {
+            return new NotFoundPresenter({ message: 'Category not found!' });
+        }
+
+        const result = toCategoryResponse(category);
+        return new SuccessPresenter(result);
     }
-
-    const result = toCategoryResponse(category);
-    return new SuccessPresenter(result);
-  }
 }

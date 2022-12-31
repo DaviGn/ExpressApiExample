@@ -2,11 +2,11 @@ import { container } from 'tsyringe';
 
 import { IBrandRepository, BrandRepository } from '@repositories/brand';
 import {
-  ListBrandsUseCase,
-  GetBrandUseCase,
-  CreateBrandUseCase,
-  UpdateBrandUseCase,
-  DeleteBrandUseCase,
+    ListBrandsUseCase,
+    GetBrandUseCase,
+    CreateBrandUseCase,
+    UpdateBrandUseCase,
+    DeleteBrandUseCase
 } from '@useCases/brand';
 
 // Repositories

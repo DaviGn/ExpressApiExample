@@ -7,17 +7,17 @@ import { processResult } from './result';
 import { UnathorizedPresenter } from './unathorized';
 
 interface IPresenter {
-  statusCode: number;
-  response: any;
+    statusCode: number;
+    response: any;
 }
 
 export {
-  ConflictPresenter,
-  NotFoundPresenter,
-  DeletedPresenter,
-  SuccessPresenter,
-  ErrorPresenter,
-  UnathorizedPresenter,
-  IPresenter,
-  processResult,
+    ConflictPresenter,
+    NotFoundPresenter,
+    DeletedPresenter,
+    SuccessPresenter,
+    ErrorPresenter,
+    UnathorizedPresenter,
+    IPresenter,
+    processResult
 };

@@ -2,13 +2,13 @@
 
 This is an example of REST api using Express. To run this project follow the instructions below:
 
-- Install the dependencies
+-   Install the dependencies
 
 ```
 npm run install
 ```
 
-- Generate Prisma schema
+-   Generate Prisma schema
 
 ```
 npm run prisma:generate

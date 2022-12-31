@@ -7,16 +7,16 @@ import { toCategoryResponse } from '@maps/category';
 
 @injectable()
 export class CreateCategoryUseCase {
-  constructor(
-    @inject('CategoryRepository') private repository: ICategoryRepository
-  ) {}
+    constructor(
+        @inject('CategoryRepository') private repository: ICategoryRepository
+    ) {}
 
-  async handle({ name }: CreateCategoryRequest): Promise<IPresenter> {
-    const createdCategory = await this.repository.create({
-      name,
-    });
+    async handle({ name }: CreateCategoryRequest): Promise<IPresenter> {
+        const createdCategory = await this.repository.create({
+            name
+        });
 
-    const result = toCategoryResponse(createdCategory);
-    return new SuccessPresenter(result);
-  }
+        const result = toCategoryResponse(createdCategory);
+        return new SuccessPresenter(result);
+    }
 }

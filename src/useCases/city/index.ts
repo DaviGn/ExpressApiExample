@@ -5,9 +5,9 @@ import { UpdateCityUseCase } from './update';
 import { DeleteCityUseCase } from './delete';
 
 export {
-  ListCitiesUseCase,
-  GetCityUseCase,
-  CreateCityUseCase,
-  UpdateCityUseCase,
-  DeleteCityUseCase,
+    ListCitiesUseCase,
+    GetCityUseCase,
+    CreateCityUseCase,
+    UpdateCityUseCase,
+    DeleteCityUseCase
 };

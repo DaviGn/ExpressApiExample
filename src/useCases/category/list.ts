@@ -6,15 +6,15 @@ import { IPresenter, SuccessPresenter } from '@presenters/index';
 
 @injectable()
 export class ListCategoriesUseCase {
-  constructor(
-    @inject('CategoryRepository') private repository: ICategoryRepository
-  ) {}
+    constructor(
+        @inject('CategoryRepository') private repository: ICategoryRepository
+    ) {}
 
-  async handle(): Promise<IPresenter> {
-    const categorys = await this.repository.list();
-    const categorysResponse = categorys.map((category) =>
-      toCategoryResponse(category)
-    );
-    return new SuccessPresenter(categorysResponse);
-  }
+    async handle(): Promise<IPresenter> {
+        const categorys = await this.repository.list();
+        const categorysResponse = categorys.map((category) =>
+            toCategoryResponse(category)
+        );
+        return new SuccessPresenter(categorysResponse);
+    }
 }

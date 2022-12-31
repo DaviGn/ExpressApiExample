@@ -1,21 +1,21 @@
 import { container } from 'tsyringe';
 
 import {
-  ICategoryRepository,
-  CategoryRepository,
+    ICategoryRepository,
+    CategoryRepository
 } from '@repositories/category';
 import {
-  ListCategoriesUseCase,
-  GetCategoryUseCase,
-  CreateCategoryUseCase,
-  UpdateCategoryUseCase,
-  DeleteCategoryUseCase,
+    ListCategoriesUseCase,
+    GetCategoryUseCase,
+    CreateCategoryUseCase,
+    UpdateCategoryUseCase,
+    DeleteCategoryUseCase
 } from '@useCases/category';
 
 // Repositories
 container.register<ICategoryRepository>(
-  'CategoryRepository',
-  CategoryRepository
+    'CategoryRepository',
+    CategoryRepository
 );
 
 // UseCases

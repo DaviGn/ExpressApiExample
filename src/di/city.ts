@@ -2,11 +2,11 @@ import { container } from 'tsyringe';
 
 import { ICityRepository, CityRepository } from '@repositories/city';
 import {
-  ListCitiesUseCase,
-  GetCityUseCase,
-  CreateCityUseCase,
-  UpdateCityUseCase,
-  DeleteCityUseCase,
+    ListCitiesUseCase,
+    GetCityUseCase,
+    CreateCityUseCase,
+    UpdateCityUseCase,
+    DeleteCityUseCase
 } from '@useCases/city';
 
 // Repositories

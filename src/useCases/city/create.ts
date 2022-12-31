@@ -6,14 +6,16 @@ import { CreateCityRequest } from '@requests/city';
 
 @injectable()
 export class CreateCityUseCase {
-  constructor(@inject('CityRepository') private repository: ICityRepository) {}
+    constructor(
+        @inject('CityRepository') private repository: ICityRepository
+    ) {}
 
-  async handle(user: CreateCityRequest): Promise<IPresenter> {
-    const createdCity = await this.repository.create({
-      name: user.name,
-      uf: user.uf,
-    });
+    async handle(user: CreateCityRequest): Promise<IPresenter> {
+        const createdCity = await this.repository.create({
+            name: user.name,
+            uf: user.uf
+        });
 
-    return new SuccessPresenter(createdCity);
-  }
+        return new SuccessPresenter(createdCity);
+    }
 }

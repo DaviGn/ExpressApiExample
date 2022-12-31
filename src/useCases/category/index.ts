@@ -5,9 +5,9 @@ import { UpdateCategoryUseCase } from './update';
 import { DeleteCategoryUseCase } from './delete';
 
 export {
-  ListCategoriesUseCase,
-  GetCategoryUseCase,
-  CreateCategoryUseCase,
-  UpdateCategoryUseCase,
-  DeleteCategoryUseCase,
+    ListCategoriesUseCase,
+    GetCategoryUseCase,
+    CreateCategoryUseCase,
+    UpdateCategoryUseCase,
+    DeleteCategoryUseCase
 };

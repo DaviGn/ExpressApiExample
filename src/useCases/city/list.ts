@@ -6,11 +6,13 @@ import { toCityResponse } from '@maps/city';
 
 @injectable()
 export class ListCitiesUseCase {
-  constructor(@inject('CityRepository') private repository: ICityRepository) {}
+    constructor(
+        @inject('CityRepository') private repository: ICityRepository
+    ) {}
 
-  async handle(): Promise<IPresenter> {
-    const cities = await this.repository.list();
-    const citiesResponse = cities.map((city) => toCityResponse(city));
-    return new SuccessPresenter(citiesResponse);
-  }
+    async handle(): Promise<IPresenter> {
+        const cities = await this.repository.list();
+        const citiesResponse = cities.map((city) => toCityResponse(city));
+        return new SuccessPresenter(citiesResponse);
+    }
 }

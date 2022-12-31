@@ -6,10 +6,10 @@ import { DeleteUserUseCase } from './delete';
 import { AuthenticateUserUseCase } from './authenticate';
 
 export {
-  ListUsersUseCase,
-  GetUserUseCase,
-  CreateUserUseCase,
-  UpdateUserUseCase,
-  DeleteUserUseCase,
-  AuthenticateUserUseCase,
+    ListUsersUseCase,
+    GetUserUseCase,
+    CreateUserUseCase,
+    UpdateUserUseCase,
+    DeleteUserUseCase,
+    AuthenticateUserUseCase
 };

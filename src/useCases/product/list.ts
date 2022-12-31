@@ -9,27 +9,27 @@ import { ProductResponse } from '@responses/product';
 
 @injectable()
 export class ListProductsUseCase {
-  constructor(
-    @inject(ProductRepository) private repository: IProductRepository,
-    @inject(CacheService) private cacheService: ICacheService
-  ) {}
+    constructor(
+        @inject(ProductRepository) private repository: IProductRepository,
+        @inject(CacheService) private cacheService: ICacheService
+    ) {}
 
-  async handle(): Promise<IPresenter> {
-    const tokenCache = 'products';
-    const cachedProducts = await this.cacheService.get<ProductResponse[]>(
-      tokenCache
-    );
+    async handle(): Promise<IPresenter> {
+        const tokenCache = 'products';
+        const cachedProducts = await this.cacheService.get<ProductResponse[]>(
+            tokenCache
+        );
 
-    if (cachedProducts) {
-      console.log(`Products are cached, returning it`);
-      return new SuccessPresenter(cachedProducts);
+        if (cachedProducts) {
+            console.log(`Products are cached, returning it`);
+            return new SuccessPresenter(cachedProducts);
+        }
+
+        const products = await this.repository.list();
+        const productsResponse = products.map((product) =>
+            toProductResponse(product)
+        );
+        await this.cacheService.set(tokenCache, productsResponse);
+        return new SuccessPresenter(productsResponse);
     }
-
-    const products = await this.repository.list();
-    const productsResponse = products.map((product) =>
-      toProductResponse(product)
-    );
-    await this.cacheService.set(tokenCache, productsResponse);
-    return new SuccessPresenter(productsResponse);
-  }
 }

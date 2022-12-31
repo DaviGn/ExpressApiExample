@@ -5,11 +5,11 @@ import { processResult } from '@presenters/index';
 import { AuthRequest } from '@domain/requests/auth';
 
 export async function authenticate(
-  req: Request<{}, {}, AuthRequest>,
-  res: Response
+    req: Request<{}, {}, AuthRequest>,
+    res: Response
 ) {
-  const authData = req.body;
-  const useCase = resolve(AuthenticateUserUseCase);
-  const result = await useCase.handle(authData);
-  return processResult(res, result);
+    const authData = req.body;
+    const useCase = resolve(AuthenticateUserUseCase);
+    const result = await useCase.handle(authData);
+    return processResult(res, result);
 }

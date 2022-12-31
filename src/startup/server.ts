@@ -14,18 +14,18 @@ const port = process.env.PORT ?? 3333;
 const appRootPath = path.join(__dirname, '../');
 
 export function runServer() {
-  const server = express();
-  server.use(cors());
-  server.use(
-    '/images',
-    express.static(path.join(appRootPath, 'content', 'images'))
-  );
-  server.use(express.json());
-  server.use(logs);
-  server.use(routes);
-  server.use(errors);
+    const server = express();
+    server.use(cors());
+    server.use(
+        '/images',
+        express.static(path.join(appRootPath, 'content', 'images'))
+    );
+    server.use(express.json());
+    server.use(logs);
+    server.use(routes);
+    server.use(errors);
 
-  server.listen(port, () => {
-    console.log('Server is running!');
-  });
+    server.listen(port, () => {
+        console.log('Server is running!');
+    });
 }

@@ -5,9 +5,9 @@ import { UpdateBrandUseCase } from './update';
 import { DeleteBrandUseCase } from './delete';
 
 export {
-  ListBrandsUseCase,
-  GetBrandUseCase,
-  CreateBrandUseCase,
-  UpdateBrandUseCase,
-  DeleteBrandUseCase,
+    ListBrandsUseCase,
+    GetBrandUseCase,
+    CreateBrandUseCase,
+    UpdateBrandUseCase,
+    DeleteBrandUseCase
 };

@@ -7,36 +7,36 @@ const requiredTokenMessage = 'JWT in required!';
 const invalidTokenMessage = 'Token is invalid!';
 
 interface JwtPayload {
-  sub: string;
+    sub: string;
 }
 
 export async function isAuthenticated(
-  request: Request,
-  response: Response,
-  next: NextFunction
+    request: Request,
+    response: Response,
+    next: NextFunction
 ) {
-  const authHeader = request.headers.authorization;
+    const authHeader = request.headers.authorization;
 
-  if (!authHeader) {
-    throw new AuthException(requiredTokenMessage);
-  }
+    if (!authHeader) {
+        throw new AuthException(requiredTokenMessage);
+    }
 
-  const [_, token] = authHeader.split(' ');
+    const [_, token] = authHeader.split(' ');
 
-  if (!token) {
-    throw new AuthException(invalidTokenMessage);
-  }
+    if (!token) {
+        throw new AuthException(invalidTokenMessage);
+    }
 
-  try {
-    const decodedToken = verify(token, JwtSignKey);
-    const { sub } = decodedToken as JwtPayload;
+    try {
+        const decodedToken = verify(token, JwtSignKey);
+        const { sub } = decodedToken as JwtPayload;
 
-    request.user = {
-      id: sub,
-    };
+        request.user = {
+            id: sub
+        };
 
-    await next();
-  } catch {
-    throw new AuthException(invalidTokenMessage);
-  }
+        await next();
+    } catch {
+        throw new AuthException(invalidTokenMessage);
+    }
 }

@@ -1,9 +1,9 @@
 interface BaseCategoryRequest {
-  name: string;
+    name: string;
 }
 
 export interface CreateCategoryRequest extends BaseCategoryRequest {}
 
 export interface UpdateCategoryRequest extends BaseCategoryRequest {
-  id: number;
+    id: number;
 }

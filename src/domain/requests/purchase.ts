@@ -1,9 +1,9 @@
 export interface PurchaseItemRequest {
-  productId: string;
-  qtd: number;
+    productId: string;
+    qtd: number;
 }
 
 export interface PurchaseRequest {
-  userId: string;
-  items: PurchaseItemRequest[];
+    userId: string;
+    items: PurchaseItemRequest[];
 }

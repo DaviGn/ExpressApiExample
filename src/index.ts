@@ -6,5 +6,5 @@ import { runServer } from './startup/server';
 dotenv.config();
 
 seed().then(() => {
-  runServer();
+    runServer();
 });
