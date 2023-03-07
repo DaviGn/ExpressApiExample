@@ -1,6 +1,7 @@
 import { Router } from 'express';
 
 import userRoutes from './users.routes';
+import userPhotoRoutes from './usersPhoto.routes';
 import citiesRoutes from './cities.routes';
 import authRoutes from './auth.routes';
 import brandRoutes from './brands.routes';
@@ -29,5 +30,6 @@ routes.use('/users', userRoutes);
 // Routes that require auth
 routes.use(isAuthenticated);
 routes.use('/purchases', purchasesRoutes);
+routes.use('/usersPhoto', userPhotoRoutes);
 
 export default routes;

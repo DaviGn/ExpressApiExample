@@ -42,7 +42,7 @@ export class AuthenticateUserUseCase {
             });
         }
 
-        const jwt = sign(object, JwtSignKey, {
+        const jwt = sign({}, JwtSignKey, {
             expiresIn: 60 * 60,
             subject: user.id
         });
