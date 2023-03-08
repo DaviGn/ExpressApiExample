@@ -26,6 +26,6 @@ export function runServer() {
     server.use(errors);
 
     server.listen(port, () => {
-        console.log('Server is running!');
+        console.log(`Server is running on port ${port}!`);
     });
 }
