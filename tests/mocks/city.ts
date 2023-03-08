@@ -1,4 +1,8 @@
-export const CityEntity = {
+import { City } from '@prisma/client';
+import { CityResponse } from '@responses/city';
+import { IMockDataFormat } from './mockDataFormat';
+
+export const CityEntityMock: IMockDataFormat<City> = {
     single: {
         id: 1,
         name: 'Santo André',
@@ -25,7 +29,7 @@ export const CityEntity = {
     ]
 };
 
-export const CityResponse = {
+export const CityResponseMock: IMockDataFormat<CityResponse> = {
     single: {
         id: 1,
         name: 'Santo André',
