@@ -14,7 +14,7 @@ phases:
     post_build:
         commands:
             - echo Removing unnecessary files...
-            - rm -rf node_modules/
+            # - rm -rf node_modules/
             - rm -rf src/
             - rm -rf tests/
 artifacts:
