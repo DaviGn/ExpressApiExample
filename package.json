@@ -7,7 +7,7 @@
         "env:prod": "node ./src/envs/set.ts prod",
         "env:dev": "node ./src/envs/set.ts dev",
         "dev:server": "ts-node-dev -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules ./src/index.ts",
-        "server": "ts-node --transpile-only -r tsconfig-paths/register ./dist/src/index.js",
+        "server": "ts-node --project tsconfig.prod.json --transpile-only -r tsconfig-paths/register ./dist/src/index.js",
         "prisma:generate": "prisma generate --schema=./prisma/schema.prisma",
         "prisma:migrate": "prisma migrate dev",
         "build": "tsc",
