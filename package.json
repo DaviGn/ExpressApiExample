@@ -7,13 +7,14 @@
         "env:prod": "node ./src/envs/set.ts prod",
         "env:dev": "node ./src/envs/set.ts dev",
         "dev:server": "ts-node-dev -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules ./src/index.ts",
-        "server": "ts-node --transpile-only -r tsconfig-paths/register ./dist/index.js",
+        "server": "ts-node --transpile-only -r tsconfig-paths/register ./dist/src/index.js",
         "prisma:generate": "prisma generate --schema=./prisma/schema.prisma",
         "prisma:migrate": "prisma migrate dev",
         "build": "tsc",
         "test": "jest",
-        "build:dev": "npm run env:dev && tsc",
-        "build:prod": "npm run env:prod && tsc"
+        "start": "npm run server",
+        "build:dev": "npm run env:dev && tsc --project tsconfig.build.json",
+        "build:prod": "npm run env:prod && tsc --project tsconfig.build.json"
     },
     "keywords": [],
     "author": "",
