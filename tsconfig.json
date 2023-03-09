@@ -22,6 +22,7 @@
             "@validators/*": ["validators/*"],
             "@routes/*": ["routes/*"]
         },
+        "types": ["node"],
         "resolveJsonModule": true,
         "outDir": "./dist",
         "esModuleInterop": true,

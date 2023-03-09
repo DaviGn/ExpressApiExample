@@ -20,6 +20,7 @@
     "author": "",
     "license": "ISC",
     "dependencies": {
+        "@types/node": "^18.11.10",
         "@prisma/client": "^4.7.1",
         "aws-sdk": "^2.1329.0",
         "cors": "^2.8.5",
@@ -43,7 +44,6 @@
         "@types/jest": "^29.4.0",
         "@types/jsonwebtoken": "^8.5.9",
         "@types/multer": "^1.4.7",
-        "@types/node": "^18.11.10",
         "@types/uuid": "^9.0.0",
         "@typescript-eslint/eslint-plugin": "^5.47.1",
         "eslint": "^8.31.0",
