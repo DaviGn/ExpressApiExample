@@ -3,6 +3,7 @@
 /coverage
 package-lock.json
 yarn.lock
+.env
 
 /prisma/migrations
 /prisma/dev.db
