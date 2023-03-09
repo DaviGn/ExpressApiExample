@@ -1,6 +1,7 @@
 import { City } from '@prisma/client';
 import { CityResponse } from '@responses/city';
 import { IMockDataFormat } from './mockDataFormat';
+import { CreateCityRequest } from '@domain/requests/city';
 
 export const CityEntityMock: IMockDataFormat<City> = {
     single: {
@@ -54,4 +55,13 @@ export const CityResponseMock: IMockDataFormat<CityResponse> = {
             uf: 'SP'
         }
     ]
+};
+
+export const CityRequestMock: IMockDataFormat<CreateCityRequest> = {
+    single: {
+        name: 'Santo André',
+        uf: 'SP'
+    },
+    listSingle: [],
+    list: []
 };
