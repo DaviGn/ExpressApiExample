@@ -7,20 +7,19 @@
         "env:prod": "node ./src/envs/set.ts prod",
         "env:dev": "node ./src/envs/set.ts dev",
         "dev:server": "ts-node-dev -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules ./src/index.ts",
-        "server": "ts-node --project tsconfig.prod.json --transpile-only -r tsconfig-paths/register ./dist/src/index.js",
+        "server": "node ./dist/src/index.js",
         "prisma:generate": "prisma generate --schema=./prisma/schema.prisma",
         "prisma:migrate": "prisma migrate dev",
-        "build": "tsc",
+        "build": "tsc --project tsconfig.build.json && tscpaths -p tsconfig.build.json -s ./src -o ./dist/src",
         "test": "jest",
         "start": "npm run server",
-        "build:dev": "npm run env:dev && tsc --project tsconfig.build.json",
-        "build:prod": "npm run env:prod && tsc --project tsconfig.build.json"
+        "build:dev": "npm run env:dev && npm run build",
+        "build:prod": "npm run env:prod && npm run build"
     },
     "keywords": [],
     "author": "",
     "license": "ISC",
     "dependencies": {
-        "@types/node": "^18.11.10",
         "@prisma/client": "^4.7.1",
         "aws-sdk": "^2.1329.0",
         "cors": "^2.8.5",
@@ -33,12 +32,13 @@
         "multer": "^1.4.5-lts.1",
         "redis": "^4.5.1",
         "reflect-metadata": "^0.1.13",
-        "tsconfig-paths": "^4.1.1",
         "ts-node": "^10.9.1",
+        "tsconfig-paths": "^4.1.1",
         "tsyringe": "^4.7.0",
         "uuid": "^9.0.0"
     },
     "devDependencies": {
+        "@types/node": "^18.11.10",
         "@types/cors": "^2.8.13",
         "@types/express": "^4.17.14",
         "@types/jest": "^29.4.0",
@@ -55,6 +55,7 @@
         "prisma": "^4.7.1",
         "ts-jest": "^29.0.5",
         "ts-node-dev": "^2.0.0",
+        "tscpaths": "^0.0.9",
         "typescript": "^4.9.3"
     }
 }

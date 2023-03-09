@@ -8,6 +8,7 @@
         "baseUrl": "./src",
         "paths": {
             "src/*": ["src/*"],
+            "@configs/*": ["configs/*"],
             "@domain/*": ["domain/*"],
             "@di/*": ["di/*"],
             "@requests/*": ["domain/requests/*"],
@@ -22,7 +23,6 @@
             "@validators/*": ["validators/*"],
             "@routes/*": ["routes/*"]
         },
-        "types": ["node"],
         "resolveJsonModule": true,
         "outDir": "./dist",
         "esModuleInterop": true,

@@ -10,7 +10,7 @@ import {
 } from '@presenters/index';
 import { AuthRequest } from '@requests/auth';
 import { hash } from '@services/crypt';
-import { JwtSignKey } from 'configs/jwt';
+import { JwtSignKey } from '@configs/jwt';
 
 @injectable()
 export class AuthenticateUserUseCase {

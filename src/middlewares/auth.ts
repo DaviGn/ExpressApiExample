@@ -1,4 +1,4 @@
-import { JwtSignKey } from 'configs/jwt';
+import { JwtSignKey } from '@configs/jwt';
 import { Request, Response, NextFunction } from 'express';
 import { verify } from 'jsonwebtoken';
 import { AuthException } from '@domain/exceptions/authException';
