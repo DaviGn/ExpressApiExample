@@ -15,7 +15,8 @@ const routes = Router();
 
 routes.get('/', (_, res) =>
     res.json({
-        message: 'Hello World!'
+        message: 'Hello World!',
+        status: 'Healthy'
     })
 );
 
