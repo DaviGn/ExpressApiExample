@@ -1,7 +1,7 @@
-FROM node:lts-alpine3.16
+FROM node:16-alpine3.16 as dist
 
 WORKDIR /usr/src/app
-
+ENV PORT=8080
 COPY ./ ./
 
 # Fixing prisma ssl error
@@ -9,7 +9,6 @@ RUN apk add --update libc6-compat openssl openssl-dev
 
 RUN npm install
 RUN npm run prisma:generate
-RUN npm run build
-
-EXPOSE 3333
-CMD ["npm", "run", "server"]
+RUN npm run build:prod
+EXPOSE 8080
+CMD [ "npm", "run", "start" ]
