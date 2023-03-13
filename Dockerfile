@@ -27,7 +27,6 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 COPY process.yml ./
 COPY ./prisma ./prisma
-COPY .env ./
 
 # Fixing prisma ssl error
 RUN apk add --update libc6-compat openssl openssl-dev
@@ -35,6 +34,8 @@ RUN apk add --update libc6-compat openssl openssl-dev
 # Building
 RUN npm i --only=production
 RUN npm run prisma:generate
+
+COPY --from=builder /app/.env ./
 COPY --from=builder /app/dist ./dist
 
 RUN npm i -g pm2
