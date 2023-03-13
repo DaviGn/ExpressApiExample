@@ -35,6 +35,7 @@ RUN apk add --update libc6-compat openssl openssl-dev
 RUN npm i --only=production
 RUN npm run prisma:generate
 
+COPY --from=builder /app/Dockerrun.aws.json ./
 COPY --from=builder /app/.env ./
 COPY --from=builder /app/dist ./dist
 
