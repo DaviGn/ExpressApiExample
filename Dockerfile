@@ -1,4 +1,3 @@
-ARG PORT=8080
 FROM node:16-alpine3.16 as node
 
 # Builder container
@@ -18,7 +17,7 @@ RUN npm run build:prod
 FROM node as final
 
 ENV NODE_ENV production
-ENV PORT=${PORT}
+ENV PORT=8080
 # ENV DATABASE_URL=
 # ENV JwtSignKey=
 
@@ -40,6 +39,6 @@ COPY --from=builder /app/dist ./dist
 
 RUN npm i -g pm2
 
-EXPOSE ${PORT}
+EXPOSE 8080
 # CMD [ "npm", "run", "start" ]
 CMD ["pm2-runtime", "./process.yml"]
