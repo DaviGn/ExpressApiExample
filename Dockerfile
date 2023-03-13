@@ -2,6 +2,8 @@ FROM node:16-alpine3.16 as dist
 
 WORKDIR /usr/src/app
 ENV PORT=8080
+# ENV DATABASE_URL=
+# ENV JwtSignKey=
 COPY ./ ./
 
 # Fixing prisma ssl error
