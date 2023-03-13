@@ -3,17 +3,17 @@ phases:
     pre_build:
         commands:
             - echo Logging in to Amazon ECR...
-            - $(aws ecr get-login --no-include-email --region sa-east-1)
+            - aws ecr get-login-password --region $AWS_DEFAULT_REGION docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
     build:
         commands:
             - echo Building image...
             - docker build -t expressapi:latest .
             - echo Tagging image...
-            - docker tag expressapi:latest 543454195198.dkr.ecr.sa-east-1.amazonaws.com/expressapi:latest
+            - docker tag expressapi:latest $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$AWS_IMAGE_NAME:latest
     post_build:
         commands:
             - echo Pushing image...
-            - docker push 543454195198.dkr.ecr.sa-east-1.amazonaws.com/expressapi:latest
+            - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$AWS_IMAGE_NAME:latest
 artifacts:
     files:
         - 'Dockerrun.aws.json'
