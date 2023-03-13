@@ -1,12 +1,18 @@
 {
-    "AWSEBDockerrunVersion": "1",
-    "Image": {
-        "Name": "***.sa-east-1.amazonaws.com/***:latest",
-        "Update": "true"
-    },
-    "Ports": [
+    "AWSEBDockerrunVersion": 2,
+    "containerDefinitions": [
         {
-            "ContainerPort": "8080"
+            "name": "api",
+            "image": "{$AWS_ACCOUNT_ID}.dkr.ecr.{$AWS_DEFAULT_REGION}.amazonaws.com/{$AWS_IMAGE_NAME}:latest",
+            "hostname": "api",
+            "essential": true,
+            "memory": 1024,
+            "portMappings": [
+                {
+                    "hostPort": 8080,
+                    "containerPort": 8080
+                }
+            ]
         }
     ]
 }

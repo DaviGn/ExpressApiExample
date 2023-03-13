@@ -24,12 +24,13 @@ ENV PORT=8080
 # Copying necessary files
 RUN mkdir -p /app/dist
 WORKDIR /usr/src/app
-COPY package*.json ./
 COPY process.yml ./
 COPY ./prisma ./prisma
 
 # Fixing prisma ssl error
 RUN apk add --update libc6-compat openssl openssl-dev
+
+COPY --from=builder /app/package*.json ./
 
 # Building
 RUN npm i --only=production

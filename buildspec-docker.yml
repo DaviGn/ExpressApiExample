@@ -14,3 +14,6 @@ phases:
         commands:
             - echo Pushing image...
             - docker push 543454195198.dkr.ecr.sa-east-1.amazonaws.com/expressapi:latest
+artifacts:
+    files:
+        - 'Dockerrun.aws.json'
