@@ -1,7 +1,7 @@
 {
     "AWSEBDockerrunVersion": "1",
     "Image": {
-        "image": "{$AWS_ACCOUNT_ID}.dkr.ecr.{$AWS_DEFAULT_REGION}.amazonaws.com/{$AWS_IMAGE_NAME}:latest",
+        "image": "543454195198.dkr.ecr.sa-east-1.amazonaws.com/expressapi:latest",
         "Update": "true"
     },
     "Ports": [
