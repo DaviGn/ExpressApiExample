@@ -6,8 +6,11 @@ phases:
             - $(aws ecr get-login --no-include-email --region sa-east-1)
     build:
         commands:
+            - echo Building image...
             - docker build -t expressapi:latest .
-            - docker tag expressapi:latest 543454195198.dkr.ecr.sa-east-1.amazonaws.com/turma905:latest
+            - echo Tagging image...
+            - docker tag expressapi:latest 543454195198.dkr.ecr.sa-east-1.amazonaws.com/expressapi:latest
     post_build:
         commands:
-            - docker push 543454195198.dkr.ecr.sa-east-1.amazonaws.com/turma905:latest
+            - echo Pushing image...
+            - docker push 543454195198.dkr.ecr.sa-east-1.amazonaws.com/expressapi:latest
