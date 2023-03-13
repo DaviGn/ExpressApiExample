@@ -19,8 +19,8 @@ FROM node as final
 
 ENV NODE_ENV production
 ENV PORT=${PORT}
-ENV DATABASE_URL="postgresql://postgres:pLRh3ZpOAjV8QPW@ecommerce.cv9qoyrrucel.sa-east-1.rds.amazonaws.com:5432/ecommerce"
-ENV JwtSignKey="662e01137fa34edcaa0c55ca3143a906"
+# ENV DATABASE_URL=
+# ENV JwtSignKey=
 
 # Copying necessary files
 RUN mkdir -p /app/dist
