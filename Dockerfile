@@ -16,7 +16,7 @@ RUN npm run build:prod
 # Produced artifact
 FROM node as final
 
-ENV NODE_ENV production
+ENV NODE_ENV=production
 ENV PORT=8080
 # ENV DATABASE_URL=
 # ENV JwtSignKey=
